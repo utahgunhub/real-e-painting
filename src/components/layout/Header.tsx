@@ -1,11 +1,35 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, Instagram } from "lucide-react";
+
+const SOCIAL_LINKS = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/real_e_painting_llc/",
+    icon: "instagram" as const,
+  },
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@realepaintingllc",
+    icon: "tiktok" as const,
+  },
+];
+
+const SocialIcon = ({ icon }: { icon: "instagram" | "tiktok" }) => {
+  if (icon === "instagram") {
+    return <Instagram className="w-5 h-5" />;
+  }
+
+  return (
+    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+    </svg>
+  );
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -20,33 +44,22 @@ const Header = () => {
     { name: "About Us", path: "/about" },
     { name: "Gallery", path: "/gallery" },
     { name: "Blog", path: "/blog" },
-    { 
-      name: "Interior Painting", 
-      path: "/interior-painting",
-      dropdown: [
-        { name: "Residential Interior", path: "/interior-painting/residential" },
-        { name: "Commercial Interior", path: "/interior-painting/commercial" },
-        { name: "Cabinet Painting", path: "/interior-painting/cabinets" },
-        { name: "Color Consultation", path: "/interior-painting/color-consultation" },
-      ]
-    },
-    { 
-      name: "Exterior Painting", 
-      path: "/exterior-painting",
-      dropdown: [
-        { name: "Residential Exterior", path: "/exterior-painting/residential" },
-        { name: "Commercial Exterior", path: "/exterior-painting/commercial" },
-        { name: "Stucco & Siding", path: "/exterior-painting/stucco-siding" },
-        { name: "Deck & Fence Staining", path: "/exterior-painting/deck-fence" },
-      ]
-    },
     { name: "All Services", path: "/services" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) => {
     if (path === "/") return location.pathname === "/";
     return location.pathname.startsWith(path);
   };
+
+  const linkClass = (path: string) =>
+    `font-medium transition-colors ${
+      isActive(path) ? "text-primary" : "text-foreground hover:text-primary"
+    }`;
+
+  const socialLinkClass =
+    "text-foreground hover:text-primary transition-colors p-1.5 rounded-full hover:bg-accent";
 
   return (
     <header
@@ -70,80 +83,69 @@ const Header = () => {
 
       <div className="container-wide flex items-center justify-between relative z-10">
         {/* Logo */}
-        <div className="flex items-center gap-3 cursor-pointer">
+        <Link to="/" className="flex items-center gap-3 shrink-0">
           <img
-            src="/nav-logo.png"
-            alt="We Paint Pros logo"
-            className="h-14 w-auto md:h-16"
+            src="/real-e-logo.png"
+            alt="Real E Painting logo"
+            className="h-16 w-auto sm:h-[4.5rem] md:h-20"
             loading="lazy"
           />
-          <span className="sr-only">We Paint Pros</span>
-        </div>
+          <span className="font-display font-bold text-lg sm:text-xl md:text-2xl text-foreground leading-tight">
+            Real E Painting
+          </span>
+        </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <div 
-              key={link.name}
-              className="relative"
-              onMouseEnter={() => link.dropdown && setOpenDropdown(link.name)}
-              onMouseLeave={() => setOpenDropdown(null)}
-            >
-              {link.dropdown ? (
-                <button
-                  className={`font-medium transition-colors flex items-center gap-1 ${
-                    isActive(link.path)
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
-                  }`}
-                >
-                  {link.name}
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-              ) : (
-                <button
-                  className={`font-medium transition-colors cursor-pointer ${
-                    isActive(link.path)
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
-                  }`}
-                  onClick={(e) => e.preventDefault()}
-                >
-                  {link.name}
-                </button>
-              )}
-              
-              {/* Dropdown Menu */}
-              {link.dropdown && openDropdown === link.name && (
-                <div className="absolute top-full left-0 w-56 z-50 pt-1">
-                  <div className="bg-white rounded-lg shadow-lg border border-border py-2 mt-1">
-                    {link.dropdown.map((item) => (
-                      <button
-                        key={item.name}
-                        onClick={(e) => e.preventDefault()}
-                        className="block w-full text-left px-4 py-2 text-foreground hover:bg-accent hover:text-primary transition-colors cursor-pointer"
-                      >
-                        {item.name}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
+        <div className="hidden lg:flex items-center gap-8">
+          <nav className="flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link key={link.name} to={link.path} className={linkClass(link.path)}>
+                {link.name}
+              </Link>
+            ))}
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="lg:hidden p-2"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? (
-            <X className="w-6 h-6 text-foreground" />
-          ) : (
-            <Menu className="w-6 h-6 text-foreground" />
-          )}
-        </button>
+          <div className="flex items-center gap-2 border-l border-border pl-6">
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={socialLinkClass}
+                aria-label={`Follow Real E Painting on ${social.name}`}
+              >
+                <SocialIcon icon={social.icon} />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: social icons + menu button */}
+        <div className="flex items-center gap-1 lg:hidden">
+          {SOCIAL_LINKS.map((social) => (
+            <a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={socialLinkClass}
+              aria-label={`Follow Real E Painting on ${social.name}`}
+            >
+              <SocialIcon icon={social.icon} />
+            </a>
+          ))}
+          <button
+            className="p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-foreground" />
+            ) : (
+              <Menu className="w-6 h-6 text-foreground" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -151,48 +153,33 @@ const Header = () => {
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-border shadow-lg animate-fade-in max-h-[80vh] overflow-y-auto z-50">
           <nav className="flex flex-col p-4">
             {navLinks.map((link) => (
-              <div key={link.name}>
-                {link.dropdown ? (
-                  <div>
-                    <button
-                      onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
-                      className={`w-full py-3 px-4 font-medium rounded-lg transition-colors flex items-center justify-between ${
-                        isActive(link.path)
-                          ? "text-primary bg-accent"
-                          : "text-foreground"
-                      }`}
-                    >
-                      {link.name}
-                      <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === link.name ? 'rotate-180' : ''}`} />
-                    </button>
-                    {openDropdown === link.name && (
-                      <div className="ml-4 mt-1 space-y-1">
-                        {link.dropdown.map((item) => (
-                          <button
-                            key={item.name}
-                            onClick={(e) => e.preventDefault()}
-                            className="block w-full text-left py-2 px-4 text-sm text-foreground rounded-lg transition-colors"
-                          >
-                            {item.name}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <button
-                    onClick={(e) => e.preventDefault()}
-                    className={`py-3 px-4 font-medium rounded-lg transition-colors block w-full text-left ${
-                      isActive(link.path)
-                        ? "text-primary bg-accent"
-                        : "text-foreground"
-                    }`}
-                  >
-                    {link.name}
-                  </button>
-                )}
-              </div>
+              <Link
+                key={link.name}
+                to={link.path}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`py-3 px-4 font-medium rounded-lg transition-colors block ${
+                  isActive(link.path) ? "text-primary bg-accent" : "text-foreground"
+                }`}
+              >
+                {link.name}
+              </Link>
             ))}
+
+            <div className="flex items-center gap-4 mt-4 pt-4 border-t border-border px-4">
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-foreground hover:text-primary transition-colors font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <SocialIcon icon={social.icon} />
+                  {social.name}
+                </a>
+              ))}
+            </div>
           </nav>
         </div>
       )}

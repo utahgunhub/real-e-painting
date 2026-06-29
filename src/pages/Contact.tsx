@@ -1,11 +1,13 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PageHero from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, Clock, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import heroImage from "@/assets/exterior-painting.jpg";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -34,19 +36,13 @@ const Contact = () => {
     <div className="min-h-screen">
       <Header />
       
-      {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-primary to-primary-glow">
-        <div className="container-wide">
-          <div className="max-w-2xl">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
-              Get Your Free Estimate
-            </h1>
-            <p className="text-xl text-primary-foreground/90">
-              Tell us about your project and we'll get back to you within 24 hours with a detailed, no-obligation quote.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact Us"
+        title="Get Your Free Utah Painting Estimate"
+        subtitle="Tell us about your interior or exterior painting project and we'll get back to you within 24 hours with a detailed, no-obligation quote for your Utah home or business."
+        image={heroImage}
+        imageAlt="Exterior painting project by Real E Painting"
+      />
 
       {/* Content */}
       <section className="py-16 bg-background">
@@ -65,8 +61,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                    <a href="tel:385-831-1065" className="text-muted-foreground hover:text-primary transition-colors">
-                      385-831-1065
+                    <a href="tel:+14357773508" className="text-muted-foreground hover:text-primary transition-colors">
+                      (435) 777-3508
                     </a>
                     <p className="text-sm text-muted-foreground mt-1">Call or text anytime</p>
                   </div>
@@ -78,22 +74,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <a href="mailto:info@wepaintpros.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      info@wepaintpros.com
+                    <a href="mailto:real.e.painting@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      real.e.painting@gmail.com
                     </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Address</h3>
-                    <p className="text-muted-foreground">
-                      3731 W South Jordan Pkwy #102<br />
-                      South Jordan, UT 84009
-                    </p>
                   </div>
                 </div>
 
@@ -159,7 +142,7 @@ const Contact = () => {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="(385) 555-0123"
+                        placeholder="(435) 555-0123"
                         required
                         className="h-12"
                       />
@@ -196,9 +179,15 @@ const Contact = () => {
                       <option value="">Select a service</option>
                       <option value="interior">Interior Painting</option>
                       <option value="exterior">Exterior Painting</option>
-                      <option value="construction">New Construction</option>
-                      <option value="commercial">Commercial Project</option>
-                      <option value="cabinets">Cabinets & Furniture</option>
+                      <option value="residential">Residential Painting</option>
+                      <option value="commercial">Commercial Painting</option>
+                      <option value="cabinets">Cabinets & Bookcases</option>
+                      <option value="epoxy">Epoxy</option>
+                      <option value="wallpaper">Wallpaper</option>
+                      <option value="countertops">Countertops & Bathtubs</option>
+                      <option value="trim">Trim Repair</option>
+                      <option value="drywall">Drywall Repair & Texture</option>
+                      <option value="staining">Wood Staining</option>
                       <option value="other">Other</option>
                     </select>
                   </div>

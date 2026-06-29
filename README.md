@@ -1,4 +1,4 @@
-# We Paint Pros
+# Real E Painting
 
 Professional interior and exterior painting services for Utah homes and businesses.
 
@@ -17,7 +17,7 @@ This project is built with modern web technologies for fast, responsive performa
 git clone <YOUR_GIT_URL>
 
 # Navigate to the project directory
-cd we-paint-pros
+cd real-e-painting
 
 # Install dependencies
 npm install

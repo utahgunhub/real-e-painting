@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { ArrowUpRight, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
@@ -42,7 +43,6 @@ const GallerySection = () => {
   const galleryImages = [
     "/gallery/gallery-1.png",
     "/gallery/gallery-2.png",
-    "/gallery/gallery-3.png",
     "/gallery/gallery-4.png",
     "/gallery/gallery-5.png",
     "/gallery/gallery-6.png",
@@ -63,21 +63,21 @@ const GallerySection = () => {
           }`}
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Our Gallery
+            Utah Painting Gallery
           </h2>
           <p className="text-muted-foreground text-lg mb-6">
-            Explore our gallery to see stunning interior and exterior painting projects from across our portfolio. 
-            Discover thoughtful details, quality craftsmanship, and transformations that make a house feel like home.
+            Browse our gallery of interior and exterior painting projects completed for Utah homeowners and businesses. 
+            See the quality craftsmanship and attention to detail that sets Real E Painting apart.
           </p>
-          <button 
-            onClick={(e) => e.preventDefault()}
-            className="flex items-center gap-3 text-foreground hover:text-primary transition-all duration-300 cursor-pointer group"
+          <Link
+            to="/gallery"
+            className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-all duration-300 cursor-pointer group"
           >
             <span className="text-sm font-medium uppercase tracking-wide">VIEW ALL IMAGES</span>
             <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
             </div>
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -97,7 +97,7 @@ const GallerySection = () => {
                 >
                   <img
                     src={src}
-                    alt={`Gallery ${idx + 1}`}
+                    alt={`Utah painting project ${idx + 1}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">

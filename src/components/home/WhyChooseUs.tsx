@@ -104,10 +104,10 @@ const WhyChooseUs = () => {
               Why <span className="text-gradient">Repaint</span>?
             </h2>
             <p className="text-muted-foreground text-lg mb-4">
-              A fresh coat of paint is one of the smartest investments you can make for your home. Known as "The Least Expensive Remodel Out There!" painting delivers exceptional value.
+              A fresh coat of paint is one of the smartest investments you can make for your Utah home. Known as "The Least Expensive Remodel Out There!" painting delivers exceptional value for homeowners across the state.
             </p>
             <p className="text-muted-foreground text-lg mb-4">
-              Whether you're looking to update your home's appearance, protect your investment, or prepare for a sale, professional painting provides both aesthetic beauty and functional protection.
+              Whether you're updating your home's appearance, protecting your investment from Utah's sun and weather, or preparing for a sale, professional house painting provides both beauty and lasting protection.
             </p>
             <p className="text-muted-foreground text-lg">
               From sealing out moisture to staying current with color trends, a quality paint job transforms your space while adding lasting value to your property.

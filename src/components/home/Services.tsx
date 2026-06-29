@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import ParallaxCard from "@/components/ParallaxCard";
 
 const Services = () => {
@@ -9,19 +10,19 @@ const Services = () => {
       title: "Interior Painting",
       label: "Interior Painting",
       imageSrc: "/interior-painting.png",
-      href: "/interior-painting",
+      href: "/services",
     },
     {
       title: "Exterior Painting",
       label: "Exterior Painting",
       imageSrc: "/exterior-painting.png",
-      href: "/exterior-painting",
+      href: "/services",
     },
     {
-      title: "Cabinet Painting",
-      label: "Cabinet Painting",
-      imageSrc: "/cabinet.png",
-      href: "/interior-painting/cabinets",
+      title: "Residential Painting",
+      label: "Residential Painting",
+      imageSrc: "/interior-painting.png",
+      href: "/services",
     },
     {
       title: "Commercial Painting",
@@ -29,6 +30,16 @@ const Services = () => {
       imageSrc: "/commercial-painting.png",
       href: "/services",
     },
+  ];
+
+  const additionalServices = [
+    "Cabinets & Bookcases",
+    "Epoxy",
+    "Wallpaper",
+    "Countertops & Bathtubs",
+    "Trim Repair",
+    "Drywall Repair & Texture",
+    "Wood Staining",
   ];
 
   return (
@@ -40,10 +51,10 @@ const Services = () => {
             Our Services
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-display mb-6">
-            Complete Painting <span className="text-gradient">Solutions</span>
+            Utah Painting <span className="text-gradient">Services</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From residential touch-ups to large commercial projects, we deliver exceptional results with every brushstroke.
+            From cabinet painting and epoxy floors to full interior and exterior house painting, Real E Painting delivers complete solutions for Utah homes and commercial properties.
           </p>
         </div>
 
@@ -51,7 +62,7 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {services.map((service, index) => (
             <ParallaxCard key={service.title} index={index}>
-              <div className="relative cursor-pointer">
+              <Link to={service.href} className="relative block cursor-pointer">
                 <div 
                   className="relative z-10 group rounded-[28px] overflow-hidden shadow-card hover:shadow-xl transition-all duration-500"
                 >
@@ -78,19 +89,31 @@ const Services = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </ParallaxCard>
+          ))}
+        </div>
+
+        {/* Additional services */}
+        <div className="mt-12 flex flex-wrap justify-center gap-3">
+          {additionalServices.map((service) => (
+            <span
+              key={service}
+              className="px-4 py-2 rounded-full bg-background text-foreground text-sm font-medium border border-border"
+            >
+              {service}
+            </span>
           ))}
         </div>
         
         {/* CTA */}
         <div className="mt-10 md:mt-12 text-center">
           <Button
+            asChild
             size="lg"
             className="px-8 py-6 text-base md:text-lg rounded-full"
-            onClick={(e) => e.preventDefault()}
           >
-            See All Services
+            <Link to="/services">See All Services</Link>
           </Button>
         </div>
       </div>

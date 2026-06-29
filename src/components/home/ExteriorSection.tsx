@@ -16,12 +16,12 @@ const WelcomeSection = () => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
 
   const values = [
-    "Exceptional service & quality workmanship",
-    "Superior products with proper preparation",
-    "Every project includes warranty & satisfaction guarantee",
-    "20+ years serving Utah homes & businesses",
-    "Honest pricing, no hidden fees or surprises",
-    "We treat every project like it's our own home",
+    "Trusted Utah painting contractor for homes & businesses",
+    "Superior products with proper surface preparation",
+    "Interior, exterior, residential & commercial painting",
+    "Cabinets, epoxy, wallpaper, drywall repair & more",
+    "Honest pricing with no hidden fees or surprises",
+    "We treat every Utah project like it's our own home",
   ];
 
   return (
@@ -58,7 +58,7 @@ const WelcomeSection = () => {
             >
               <img
                 src={exteriorImage}
-                alt="Beautifully painted home exterior"
+                alt="Exterior house painting project in Utah"
                 className="w-full h-auto"
               />
               {/* Animated overlay on hover */}
@@ -123,7 +123,7 @@ const WelcomeSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              An <span className="text-gradient">Honest & Reputable</span> Painting Company
+              Utah's Friendly Neighborhood <span className="text-gradient">Painters</span>
             </motion.h2>
             
             <motion.p 
@@ -132,7 +132,7 @@ const WelcomeSection = () => {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              We love what we do, and we'll always do our best for you! With over 20 years of experience and thousands of completed projects, we've built our reputation on fast, friendly, and affordable painting services.
+              Real E Painting serves homeowners and businesses across Utah with interior painting, exterior painting, cabinet refinishing, epoxy coatings, wallpaper, and more. Whether it's a single room or a full property refresh, we bring friendly service and quality craftsmanship to every job.
             </motion.p>
 
             <ul className="space-y-4">

@@ -10,6 +10,21 @@ const CTASection = () => {
 
   return (
     <section className="py-24 bg-gradient-to-br from-primary to-primary-glow relative overflow-hidden" ref={ref}>
+      {/* Top wave transition */}
+      <div className="absolute top-0 left-0 right-0 z-20 leading-none pointer-events-none">
+        <svg
+          viewBox="0 0 1200 80"
+          preserveAspectRatio="none"
+          className="w-full h-12 md:h-16"
+          style={{ transform: "scaleY(-1)" }}
+        >
+          <path
+            d="M0 80V40c100 20 100-30 200-10s100 40 200 20 100-50 200-20 100 35 200 15 100-40 200-15 100 25 200 5V80z"
+            fill="hsl(var(--background))"
+          />
+        </svg>
+      </div>
+
       {/* Animated background patterns */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Floating circles */}
@@ -63,7 +78,7 @@ const CTASection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
           >
-            Schedule Your Free Estimate Today
+            Schedule Your Free Utah Painting Estimate
           </motion.h2>
           
           <motion.p 
@@ -72,7 +87,7 @@ const CTASection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.3 }}
           >
-            Ready to transform your space? Get a detailed, no-obligation estimate within 24 hours. Our team is standing by to help bring your vision to life.
+            Ready to refresh your Utah home or business? Get a detailed, no-obligation interior or exterior painting estimate within 24 hours. Real E Painting is standing by to help.
           </motion.p>
 
           <motion.div 
@@ -87,20 +102,22 @@ const CTASection = () => {
               whileTap={{ scale: 0.98 }}
             >
               <Button
+                asChild
                 variant="hero-outline"
                 size="xl"
                 className="w-full sm:w-auto bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0 group flex items-center justify-center gap-2"
-                onClick={(e) => e.preventDefault()}
               >
-                <MessageCircle className="w-5 h-5" />
-                Request Free Quote
-                <motion.span
-                  className="inline-block"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                >
-                  <ArrowRight className="w-5 h-5" />
-                </motion.span>
+                <Link to="/contact">
+                  <MessageCircle className="w-5 h-5" />
+                  Request Free Quote
+                  <motion.span
+                    className="inline-block"
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.span>
+                </Link>
               </Button>
             </motion.div>
             
@@ -109,14 +126,16 @@ const CTASection = () => {
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Button variant="hero-outline" size="xl" className="w-full sm:w-auto flex items-center justify-center gap-2" onClick={(e) => e.preventDefault()}>
-                <motion.span
-                  animate={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
-                >
-                  <Phone className="w-5 h-5" />
-                </motion.span>
-                Call 385-831-1065
+              <Button variant="hero-outline" size="xl" className="w-full sm:w-auto flex items-center justify-center gap-2" asChild>
+                <a href="tel:+14357773508">
+                  <motion.span
+                    animate={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
+                  >
+                    <Phone className="w-5 h-5" />
+                  </motion.span>
+                  Call (435) 777-3508
+                </a>
               </Button>
             </motion.div>
           </motion.div>

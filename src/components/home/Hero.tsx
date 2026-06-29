@@ -16,9 +16,9 @@ const Hero = () => {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
 
   const trustBadges = [
-    { icon: DollarSign, text: "0% Financing Available" },
-    { icon: Clock, text: "Free Estimates" },
-    { icon: Shield, text: "Warranty Guaranteed" },
+    { icon: Clock, text: "Free Utah Estimates" },
+    { icon: Shield, text: "Quality Guaranteed" },
+    { icon: DollarSign, text: "Residential & Commercial" },
   ];
 
   const containerVariants = {
@@ -56,7 +56,7 @@ const Hero = () => {
       >
         <img
           src={heroImage}
-          alt="Professional painters working on a Utah home"
+          alt="Professional house painters working on a Utah home"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-hero" />
@@ -123,11 +123,10 @@ const Hero = () => {
             variants={itemVariants}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6"
           >
-            Utah's Professional{" "}
+            Utah's Friendly Neighborhood{" "}
             <span className="relative inline-block">
-              <span className="brush-underline">Interior & Exterior</span>
-            </span>{" "}
-            Painters
+              <span className="brush-underline">Painters</span>
+            </span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -135,7 +134,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-xl md:text-2xl text-primary-foreground/90 mb-8"
           >
-            Fast, friendly, affordable painting backed by 20+ years of experience
+            Real E Painting is your local Utah painting contractor — interior, exterior, residential, and commercial services to freshen up your home or business, inside and out.
           </motion.p>
 
           {/* CTAs with hover effects */}
@@ -147,8 +146,8 @@ const Hero = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              <button 
-                onClick={(e) => e.preventDefault()}
+              <Link
+                to="/contact"
                 className="relative overflow-hidden group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl h-14 px-10 text-lg font-semibold bg-white text-primary hover:bg-white/90 shadow-lg transition-all duration-200 cursor-pointer"
               >
                 <span className="relative z-10">Get a Free Estimate</span>
@@ -158,15 +157,17 @@ const Hero = () => {
                   whileHover={{ x: "100%" }}
                   transition={{ duration: 0.5 }}
                 />
-              </button>
+              </Link>
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Button variant="hero-outline" size="xl" onClick={(e) => e.preventDefault()}>
-                <Phone className="w-5 h-5" />
-                Call 385-831-1065
+              <Button variant="hero-outline" size="xl" asChild>
+                <a href="tel:+14357773508">
+                  <Phone className="w-5 h-5" />
+                  Call (435) 777-3508
+                </a>
               </Button>
             </motion.div>
           </motion.div>
