@@ -1,37 +1,12 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import PageHero from "@/components/layout/PageHero";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, Clock, Send } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { LeadForm } from "@/components/LeadForm";
+import { SocialLinks } from "@/components/SocialLinks";
+import { Phone, Mail, Clock } from "lucide-react";
 import heroImage from "@/assets/exterior-painting.jpg";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Thank you for reaching out!",
-      description: "We'll get back to you within 24 hours with your free estimate.",
-    });
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   return (
     <div className="min-h-screen">
       <Header />
@@ -93,6 +68,11 @@ const Contact = () => {
                     </p>
                   </div>
                 </div>
+
+                <div>
+                  <h3 className="font-semibold text-foreground mb-3">Follow Us</h3>
+                  <SocialLinks variant="list" />
+                </div>
               </div>
 
               {/* Quick Response */}
@@ -109,113 +89,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="bg-card rounded-2xl shadow-card p-8 md:p-10">
-                <h2 className="font-display text-2xl font-bold text-foreground mb-2">
-                  Request Your Free Estimate
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Fill out the form below and we'll prepare a detailed quote for your project.
-                </p>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Full Name *
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Smith"
-                        required
-                        className="h-12"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                        Phone Number *
-                      </label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="(435) 555-0123"
-                        required
-                        className="h-12"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                      Email Address *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@example.com"
-                      required
-                      className="h-12"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
-                      Service Needed
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="w-full h-12 px-4 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="interior">Interior Painting</option>
-                      <option value="exterior">Exterior Painting</option>
-                      <option value="residential">Residential Painting</option>
-                      <option value="commercial">Commercial Painting</option>
-                      <option value="cabinets">Cabinets & Bookcases</option>
-                      <option value="epoxy">Epoxy</option>
-                      <option value="wallpaper">Wallpaper</option>
-                      <option value="countertops">Countertops & Bathtubs</option>
-                      <option value="trim">Trim Repair</option>
-                      <option value="drywall">Drywall Repair & Texture</option>
-                      <option value="staining">Wood Staining</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                      Project Details
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your project - square footage, number of rooms, timeline, any special requirements..."
-                      rows={5}
-                      className="resize-none"
-                    />
-                  </div>
-
-                  <Button type="submit" variant="cta" size="xl" className="w-full">
-                    <Send className="w-5 h-5 mr-2" />
-                    Submit Request
-                  </Button>
-
-                  <p className="text-center text-sm text-muted-foreground">
-                    By submitting, you agree to receive communication about your estimate. We never share your info.
-                  </p>
-                </form>
+                <LeadForm variant="full" idPrefix="contact" />
               </div>
             </div>
           </div>
