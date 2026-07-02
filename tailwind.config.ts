@@ -28,6 +28,15 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           glow: "hsl(var(--primary-glow))",
+          dark: "hsl(var(--primary-dark))",
+        },
+        hero: {
+          purple: "hsl(var(--hero-purple))",
+          "purple-light": "hsl(var(--hero-purple-light))",
+        },
+        brand: {
+          blue: "hsl(var(--brand-blue))",
+          pink: "hsl(var(--brand-pink))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -96,7 +105,7 @@ export default {
       boxShadow: {
         "card": "0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05)",
         "card-hover": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05)",
-        "purple": "0 10px 30px -10px rgba(129, 57, 180, 0.3)",
+        "purple": "0 10px 30px -10px rgba(255, 110, 245, 0.3)",
       },
     },
   },

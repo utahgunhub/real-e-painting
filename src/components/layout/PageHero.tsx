@@ -18,24 +18,6 @@ const PageHero = ({ eyebrow, title, subtitle, image, imageAlt = "" }: PageHeroPr
         <div className="absolute inset-0 bg-gradient-hero" />
       </div>
 
-      {/* Floating paint splashes */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-primary-foreground/5"
-            style={{
-              width: 120 + ((i * 53) % 180),
-              height: 120 + ((i * 53) % 180),
-              left: `${(i * 23) % 100}%`,
-              top: `${(i * 37) % 100}%`,
-            }}
-            animate={{ y: [0, -25, 0], x: [0, 15, 0] }}
-            transition={{ duration: 6 + i, repeat: Infinity, delay: i * 0.4 }}
-          />
-        ))}
-      </div>
-
       <div className="container-wide relative z-10">
         <motion.div
           className="max-w-2xl"

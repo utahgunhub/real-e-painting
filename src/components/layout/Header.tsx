@@ -63,9 +63,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-        isScrolled ? "shadow-md pt-3 pb-0" : "shadow-sm pt-5 pb-0"
-      } relative overflow-visible`}
+      className={`fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-300 ${
+        isScrolled ? "shadow-md shadow-black/40 pt-3 pb-0" : "shadow-sm shadow-black/20 pt-5 pb-0"
+      } relative overflow-visible border-b border-border`}
     >
       {/* Top wave accent */}
       <div className="absolute top-0 left-0 right-0 pointer-events-none z-0">
@@ -150,7 +150,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-border shadow-lg animate-fade-in max-h-[80vh] overflow-y-auto z-50">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-lg shadow-black/40 animate-fade-in max-h-[80vh] overflow-y-auto z-50">
           <nav className="flex flex-col p-4">
             {navLinks.map((link) => (
               <Link

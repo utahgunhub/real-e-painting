@@ -26,21 +26,6 @@ const WelcomeSection = () => {
 
   return (
     <section ref={containerRef} className="py-24 bg-background relative overflow-hidden">
-      {/* Background paint splatter effect */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <motion.div
-          className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full"
-          style={{
-            background: "radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, transparent 70%)",
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity }}
-        />
-      </div>
-
       <div className="container-wide relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image with parallax */}
@@ -76,7 +61,7 @@ const WelcomeSection = () => {
               whileHover={{ scale: 1.1, rotate: 5 }}
             >
               <motion.div 
-                className="font-display text-3xl font-bold text-primary mb-1"
+                className="font-display text-3xl font-bold text-brand-pink mb-1"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.8 }}
@@ -88,13 +73,13 @@ const WelcomeSection = () => {
 
             {/* Paint drip decoration */}
             <motion.div
-              className="absolute -top-4 left-10 w-4 h-20 bg-primary rounded-b-full"
+              className="absolute -top-4 left-10 w-4 h-20 bg-brand-blue rounded-b-full"
               initial={{ height: 0 }}
               animate={isInView ? { height: 80 } : {}}
               transition={{ delay: 0.3, duration: 0.8 }}
             />
             <motion.div
-              className="absolute -top-4 left-20 w-3 h-12 bg-primary/70 rounded-b-full"
+              className="absolute -top-4 left-20 w-3 h-12 bg-brand-pink/80 rounded-b-full"
               initial={{ height: 0 }}
               animate={isInView ? { height: 48 } : {}}
               transition={{ delay: 0.5, duration: 0.6 }}
@@ -109,7 +94,7 @@ const WelcomeSection = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.span 
-              className="inline-block text-primary font-semibold mb-4 px-4 py-1 bg-primary/10 rounded-full"
+              className="eyebrow-pill"
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : {}}
               transition={{ delay: 0.2, type: "spring" }}
@@ -145,10 +130,10 @@ const WelcomeSection = () => {
                   transition={{ delay: 0.5 + index * 0.1 }}
                 >
                   <motion.div 
-                    className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5"
+                    className="w-6 h-6 rounded-full bg-brand-blue/15 flex items-center justify-center shrink-0 mt-0.5"
                     whileHover={{ scale: 1.2, backgroundColor: "hsl(var(--primary))" }}
                   >
-                    <Check className="w-3.5 h-3.5 text-primary" />
+                    <Check className="w-3.5 h-3.5 text-brand-pink" />
                   </motion.div>
                   <span className="text-foreground">{value}</span>
                 </motion.li>

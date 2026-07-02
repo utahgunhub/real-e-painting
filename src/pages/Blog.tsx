@@ -59,7 +59,7 @@ const Blog = () => {
                 alt={featured.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <span className="absolute top-6 left-6 px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-medium">
+              <span className="absolute top-6 left-6 px-3 py-1 rounded-full bg-gradient-brand text-primary-foreground text-sm font-medium">
                 Featured
               </span>
             </div>
@@ -98,7 +98,7 @@ const Blog = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeCategory === category
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-gradient-brand text-primary-foreground"
                     : "bg-section-alt text-foreground hover:bg-accent"
                 }`}
               >
@@ -134,7 +134,7 @@ const Blog = () => {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
-                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-medium">
+                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-brand text-primary-foreground text-xs font-medium">
                         {post.category}
                       </span>
                     </div>

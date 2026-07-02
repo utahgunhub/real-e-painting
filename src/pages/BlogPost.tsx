@@ -61,7 +61,7 @@ const BlogPost = () => {
                   <ul key={idx} className="space-y-3">
                     {block.items.map((item) => (
                       <li key={item} className="flex items-start gap-3">
-                        <span className="mt-2 w-2 h-2 rounded-full bg-primary shrink-0" />
+                        <span className="mt-2 w-2 h-2 rounded-full bg-brand-pink shrink-0" />
                         <span className="text-muted-foreground text-lg leading-relaxed">
                           {item}
                         </span>
@@ -119,7 +119,7 @@ const BlogPost = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-medium">
+                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-gradient-brand text-primary-foreground text-xs font-medium">
                       {item.category}
                     </span>
                   </div>

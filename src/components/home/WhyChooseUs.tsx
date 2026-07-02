@@ -81,18 +81,18 @@ const WhyChooseUs = () => {
   const paintingProgress = sectionProgress;
 
   return (
-    <section ref={sectionRef} className="relative py-16 overflow-hidden">
+    <section ref={sectionRef} className="relative py-16 overflow-hidden bg-background">
       {/* Gradient sweep effect */}
       <div
         className="absolute inset-0 transition-all duration-1000"
         style={{
           background: isClient
             ? `linear-gradient(to right, 
-                rgba(139, 92, 246, 0.1) 0%, 
-                rgba(139, 92, 246, 0.1) ${paintingProgress * 100}%, 
-                white ${paintingProgress * 100}%, 
-                white 100%)`
-            : "white",
+                rgba(82, 134, 253, 0.18) 0%, 
+                rgba(82, 134, 253, 0.18) ${paintingProgress * 100}%, 
+                hsl(0 0% 0%) ${paintingProgress * 100}%, 
+                hsl(0 0% 0%) 100%)`
+            : "hsl(0 0% 0%)",
         }}
       />
 
@@ -119,10 +119,10 @@ const WhyChooseUs = () => {
             {reasons.map((reason) => (
               <div
                 key={reason.title}
-                className="flex flex-col p-4 rounded-xl bg-section-alt"
+                className="flex flex-col p-4 rounded-xl bg-card border border-border"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
-                  <reason.icon className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-lg icon-accent flex items-center justify-center mb-3">
+                  <reason.icon className="w-5 h-5" />
                 </div>
                 <h3 className="font-semibold text-foreground mb-2">
                   {reason.title}

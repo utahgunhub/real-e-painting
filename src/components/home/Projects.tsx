@@ -32,7 +32,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.span 
-            className="inline-block text-primary font-semibold mb-4 px-4 py-1 bg-primary/10 rounded-full"
+            className="eyebrow-pill"
             initial={{ scale: 0 }}
             animate={isInView ? { scale: 1 } : {}}
             transition={{ delay: 0.2, type: "spring" }}
@@ -92,7 +92,7 @@ const Projects = () => {
               </p>
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-gradient-brand flex items-center justify-center">
                   <span className="text-primary-foreground font-semibold text-sm">
                     {testimonial.initial}
                   </span>

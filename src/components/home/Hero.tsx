@@ -67,7 +67,7 @@ const Hero = () => {
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute top-0 w-8 bg-primary rounded-b-full"
+            className={`absolute top-0 w-8 rounded-b-full ${i % 2 === 0 ? "bg-hero-purple" : "bg-hero-purple-light"}`}
             style={{ left: `${10 + i * 12}%` }}
             initial={{ height: 0 }}
             animate={{ 
@@ -77,32 +77,6 @@ const Hero = () => {
               duration: 2,
               delay: i * 0.2,
               ease: "easeOut",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Floating Paint Splashes */}
-      <div className="absolute inset-0 z-5 pointer-events-none overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-primary/10"
-            style={{
-              width: 100 + Math.random() * 200,
-              height: 100 + Math.random() * 200,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, 20, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 3,
-              repeat: Infinity,
-              delay: i * 0.5,
             }}
           />
         ))}
@@ -118,15 +92,12 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
         >
-          {/* Headline with brush underline effect */}
           <motion.h1 
             variants={itemVariants}
             className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6"
           >
             Utah's Friendly Neighborhood{" "}
-            <span className="relative inline-block">
-              <span className="brush-underline">Painters</span>
-            </span>
+            <span className="text-gradient">Painters</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -148,7 +119,7 @@ const Hero = () => {
             >
               <Link
                 to="/contact"
-                className="relative overflow-hidden group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl h-14 px-10 text-lg font-semibold bg-white text-primary hover:bg-white/90 shadow-lg transition-all duration-200 cursor-pointer"
+                className="relative overflow-hidden group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl h-14 px-10 text-lg font-semibold bg-white text-brand-pink hover:bg-white/90 shadow-lg transition-all duration-200 cursor-pointer"
               >
                 <span className="relative z-10">Get a Free Estimate</span>
                 <motion.div

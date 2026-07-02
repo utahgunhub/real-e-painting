@@ -74,7 +74,7 @@ const GallerySection = () => {
             className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-all duration-300 cursor-pointer group"
           >
             <span className="text-sm font-medium uppercase tracking-wide">VIEW ALL IMAGES</span>
-            <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <div className="w-8 h-8 rounded-full bg-gradient-brand text-primary-foreground flex items-center justify-center transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
             </div>
           </Link>
@@ -109,16 +109,16 @@ const GallerySection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-4 bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl border-0 w-12 h-12 rounded-full transition-all duration-300 hover:scale-110" />
-          <CarouselNext className="right-4 bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl border-0 w-12 h-12 rounded-full transition-all duration-300 hover:scale-110" />
+          <CarouselPrevious className="left-4 bg-gradient-brand hover:opacity-90 text-primary-foreground shadow-xl border-0 w-12 h-12 rounded-full transition-all duration-300 hover:scale-110" />
+          <CarouselNext className="right-4 bg-gradient-brand hover:opacity-90 text-primary-foreground shadow-xl border-0 w-12 h-12 rounded-full transition-all duration-300 hover:scale-110" />
         </Carousel>
       </div>
 
       {/* Image Modal */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-0 bg-transparent">
-          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-white/90 hover:bg-white p-2 transition-all duration-300 hover:scale-110">
-            <X className="h-6 w-6 text-gray-900" />
+          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-card hover:bg-accent p-2 transition-all duration-300 hover:scale-110 border border-border">
+            <X className="h-6 w-6 text-foreground" />
             <span className="sr-only">Close</span>
           </DialogClose>
           {selectedImage && (

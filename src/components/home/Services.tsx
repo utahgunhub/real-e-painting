@@ -47,7 +47,7 @@ const Services = () => {
       <div className="container-wide mx-auto">
         {/* Heading */}
         <div className="text-center mb-12 md:mb-16">
-          <span className="inline-block text-primary font-semibold mb-4 px-4 py-1 bg-primary/10 rounded-full">
+          <span className="eyebrow-pill">
             Our Services
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground font-display mb-6">
@@ -83,7 +83,7 @@ const Services = () => {
                           {service.label ?? service.title}
                         </span>
                       </div>
-                      <div className="absolute -right-2 -top-6 md:-right-3 md:-top-7 w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-xl transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:bg-primary/90">
+                      <div className="absolute -right-2 -top-6 md:-right-3 md:-top-7 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-brand text-primary-foreground flex items-center justify-center shadow-xl transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                         <ArrowUpRight className="w-6 h-6 transition-transform duration-300 group-hover:rotate-45" />
                       </div>
                     </div>
@@ -99,7 +99,7 @@ const Services = () => {
           {additionalServices.map((service) => (
             <span
               key={service}
-              className="px-4 py-2 rounded-full bg-background text-foreground text-sm font-medium border border-border"
+              className="px-4 py-2 rounded-full bg-card text-foreground text-sm font-medium border border-border"
             >
               {service}
             </span>

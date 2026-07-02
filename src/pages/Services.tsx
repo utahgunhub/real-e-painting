@@ -168,7 +168,7 @@ const Services = () => {
                 whileHover={{ y: -6 }}
                 className="group bg-card rounded-2xl p-8 shadow-card hover:shadow-purple transition-all duration-300 border border-border"
               >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 rounded-xl bg-gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <service.icon className="w-7 h-7 text-primary-foreground" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-foreground mb-3">
@@ -187,7 +187,7 @@ const Services = () => {
       <section className="py-20 bg-section-alt relative overflow-hidden">
         <div className="container-wide relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="inline-block text-primary font-semibold mb-4 px-4 py-1 bg-primary/10 rounded-full">
+            <span className="eyebrow-pill">
               How It Works
             </span>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -214,8 +214,8 @@ const Services = () => {
                 <span className="absolute top-6 right-6 font-display text-4xl font-bold text-primary/10">
                   {item.step}
                 </span>
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                  <item.icon className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl icon-accent flex items-center justify-center mb-5">
+                  <item.icon className="w-6 h-6" />
                 </div>
                 <h3 className="font-display font-bold text-lg text-foreground mb-2">
                   {item.title}
@@ -248,7 +248,7 @@ const Services = () => {
                   "Honest pricing with no surprises",
                 ].map((point) => (
                   <li key={point} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-6 h-6 text-brand-blue shrink-0 mt-0.5" />
                     <span className="text-foreground">{point}</span>
                   </li>
                 ))}
@@ -271,8 +271,8 @@ const Services = () => {
                 alt="Real E Painting crew completing an interior painting project"
                 className="rounded-2xl shadow-xl w-full h-auto object-cover"
               />
-              <div className="absolute -top-4 left-10 w-4 h-20 bg-primary rounded-b-full hidden md:block" />
-              <div className="absolute -top-4 left-20 w-3 h-12 bg-primary/70 rounded-b-full hidden md:block" />
+              <div className="absolute -top-4 left-10 w-4 h-20 bg-brand-blue rounded-b-full hidden md:block" />
+              <div className="absolute -top-4 left-20 w-3 h-12 bg-brand-pink/80 rounded-b-full hidden md:block" />
             </div>
           </div>
         </div>

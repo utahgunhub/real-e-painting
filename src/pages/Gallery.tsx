@@ -74,8 +74,8 @@ const Gallery = () => {
       {/* Lightbox */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
         <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-0 bg-transparent">
-          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-white/90 hover:bg-white p-2 transition-all duration-300 hover:scale-110">
-            <X className="h-6 w-6 text-gray-900" />
+          <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-card hover:bg-accent p-2 transition-all duration-300 hover:scale-110 border border-border">
+            <X className="h-6 w-6 text-foreground" />
             <span className="sr-only">Close</span>
           </DialogClose>
           {selectedImage && (

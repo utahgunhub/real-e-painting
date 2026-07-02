@@ -9,7 +9,7 @@ const CTASection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 bg-gradient-to-br from-primary to-primary-glow relative overflow-hidden" ref={ref}>
+    <section className="py-24 bg-gradient-cta relative overflow-hidden" ref={ref}>
       {/* Top wave transition */}
       <div className="absolute top-0 left-0 right-0 z-20 leading-none pointer-events-none">
         <svg
@@ -23,46 +23,6 @@ const CTASection = () => {
             fill="hsl(var(--background))"
           />
         </svg>
-      </div>
-
-      {/* Animated background patterns */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Floating circles */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-primary-foreground/5"
-            style={{
-              width: 100 + Math.random() * 300,
-              height: 100 + Math.random() * 300,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, 20, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 5 + Math.random() * 5,
-              repeat: Infinity,
-              delay: i * 0.3,
-            }}
-          />
-        ))}
-
-        {/* Paint drips from top */}
-        <div className="absolute top-0 left-0 right-0 flex justify-around">
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-6 bg-primary-foreground/10 rounded-b-full"
-              initial={{ height: 0 }}
-              animate={isInView ? { height: 40 + Math.random() * 80 } : {}}
-              transition={{ delay: i * 0.15, duration: 1 }}
-            />
-          ))}
-        </div>
       </div>
 
       <div className="container-wide relative z-10">
@@ -105,7 +65,7 @@ const CTASection = () => {
                 asChild
                 variant="hero-outline"
                 size="xl"
-                className="w-full sm:w-auto bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0 group flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-primary-foreground text-brand-pink hover:bg-primary-foreground/90 border-0 group flex items-center justify-center gap-2"
               >
                 <Link to="/contact">
                   <MessageCircle className="w-5 h-5" />
@@ -178,7 +138,7 @@ const CTASection = () => {
         <svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="w-full h-16">
           <motion.path
             d="M0 80V50c150 30 300-20 450 10s300-25 450 5 150 15 300-10v25z"
-            fill="hsl(var(--foreground))"
+            fill="hsl(var(--background))"
             initial={{ d: "M0 80V80c150 0 300 0 450 0s300 0 450 0 150 0 300 0v0z" }}
             animate={{ d: "M0 80V50c150 30 300-20 450 10s300-25 450 5 150 15 300-10v25z" }}
             transition={{ duration: 1, ease: "easeOut" }}

@@ -67,7 +67,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value) => (
               <div key={value.title} className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-brand flex items-center justify-center mx-auto mb-4">
                   <value.icon className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <h3 className="font-display font-bold text-xl text-foreground mb-2">{value.title}</h3>
