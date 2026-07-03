@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { sendLeadForm } from "@/lib/emailjs";
 import { cn } from "@/lib/utils";
 
 const serviceOptions = [
@@ -22,11 +23,24 @@ const serviceOptions = [
   { value: "other", label: "Other" },
 ];
 
+const FORM_SOURCE_LABELS: Record<string, string> = {
+  hero: "Homepage Hero",
+  contact: "Contact Page",
+};
+
 interface LeadFormProps {
   variant?: "compact" | "full";
   className?: string;
   idPrefix?: string;
 }
+
+const emptyFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  service: "",
+  message: "",
+};
 
 export const LeadForm = ({
   variant = "compact",
@@ -34,21 +48,41 @@ export const LeadForm = ({
   idPrefix = "lead",
 }: LeadFormProps) => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(emptyFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Thank you for reaching out!",
-      description: "We'll get back to you within 24 hours with your free estimate.",
-    });
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    setIsSubmitting(true);
+
+    const serviceLabel =
+      serviceOptions.find((option) => option.value === formData.service)?.label ?? "";
+
+    try {
+      await sendLeadForm({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        serviceLabel,
+        message: formData.message,
+        formSource: FORM_SOURCE_LABELS[idPrefix] ?? idPrefix,
+      });
+
+      toast({
+        title: "Thank you for reaching out!",
+        description: "We'll get back to you within 24 hours with your free estimate.",
+      });
+      setFormData(emptyFormData);
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "We couldn't send your request. Please call (435) 777-3508 instead.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -97,6 +131,7 @@ export const LeadForm = ({
               onChange={handleChange}
               placeholder="John Smith"
               required
+              disabled={isSubmitting}
               className={isCompact ? "h-11 bg-background" : "h-12"}
             />
           </div>
@@ -115,6 +150,7 @@ export const LeadForm = ({
               onChange={handleChange}
               placeholder="(435) 555-0123"
               required
+              disabled={isSubmitting}
               className={isCompact ? "h-11 bg-background" : "h-12"}
             />
           </div>
@@ -135,6 +171,7 @@ export const LeadForm = ({
             onChange={handleChange}
             placeholder="john@example.com"
             required
+            disabled={isSubmitting}
             className={isCompact ? "h-11 bg-background" : "h-12"}
           />
         </div>
@@ -151,8 +188,9 @@ export const LeadForm = ({
             name="service"
             value={formData.service}
             onChange={handleChange}
+            disabled={isSubmitting}
             className={cn(
-              "w-full px-4 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring",
+              "w-full px-4 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50",
               isCompact ? "h-11 text-sm" : "h-12"
             )}
           >
@@ -169,7 +207,7 @@ export const LeadForm = ({
             htmlFor={`${idPrefix}-message`}
             className="block text-sm font-medium text-foreground mb-1.5"
           >
-            Project Details{isCompact ? "" : ""}
+            Project Details
           </label>
           <Textarea
             id={`${idPrefix}-message`}
@@ -182,13 +220,29 @@ export const LeadForm = ({
                 : "Tell us about your project - square footage, number of rooms, timeline, any special requirements..."
             }
             rows={isCompact ? 3 : 5}
+            disabled={isSubmitting}
             className="resize-none bg-background"
           />
         </div>
 
-        <Button type="submit" variant="cta" size={isCompact ? "lg" : "xl"} className="w-full">
-          <Send className="w-5 h-5 mr-2" />
-          {isCompact ? "Request Free Quote" : "Submit Request"}
+        <Button
+          type="submit"
+          variant="cta"
+          size={isCompact ? "lg" : "xl"}
+          className="w-full"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? (
+            <>
+              <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              <Send className="w-5 h-5 mr-2" />
+              {isCompact ? "Request Free Quote" : "Submit Request"}
+            </>
+          )}
         </Button>
 
         <p className="text-center text-xs text-muted-foreground">
