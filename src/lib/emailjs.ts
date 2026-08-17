@@ -29,3 +29,28 @@ export const sendLeadForm = async (payload: LeadFormPayload) => {
     EMAILJS_PUBLIC_KEY
   );
 };
+
+export interface ReviewFeedbackPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  rating: number;
+  message: string;
+}
+
+export const sendReviewFeedback = async (payload: ReviewFeedbackPayload) => {
+  return emailjs.send(
+    EMAILJS_SERVICE_ID,
+    EMAILJS_TEMPLATE_ID,
+    {
+      from_name: `${payload.firstName} ${payload.lastName}`.trim(),
+      reply_to: payload.email,
+      phone: payload.phone,
+      service: `Private review (${payload.rating}/5 stars)`,
+      message: `Rating: ${payload.rating} out of 5 stars\n\n${payload.message}`,
+      form_source: "Review Page — Low Rating Feedback",
+    },
+    EMAILJS_PUBLIC_KEY
+  );
+};
