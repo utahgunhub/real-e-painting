@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { sendReviewFeedback } from "@/lib/emailjs";
+import { useSeo } from "@/hooks/useSeo";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import { Loader2, Star } from "lucide-react";
@@ -28,6 +29,13 @@ const emptyFormData = {
 };
 
 const Review = () => {
+  useSeo({
+    title: "Rate Your Experience | Real E Painting",
+    description: "Tell us how Real E Painting did on your project. Your feedback helps Utah homeowners and helps our crew keep improving.",
+    path: "/review",
+    noindex: true,
+  });
+
   const { toast } = useToast();
   const [rating, setRating] = useState<number | null>(null);
   const [showLowRatingForm, setShowLowRatingForm] = useState(false);

@@ -4,8 +4,19 @@ import PageHero from "@/components/layout/PageHero";
 import CTASection from "@/components/home/CTASection";
 import { Award, Users, Target, Heart } from "lucide-react";
 import heroImage from "@/assets/hero-painting.jpg";
+import { buildBreadcrumbSchema, useSeo } from "@/hooks/useSeo";
+
+const schema = [buildBreadcrumbSchema([{ name: "About", path: "/about" }])];
 
 const About = () => {
+  useSeo({
+    title: "About Us | Utah's Neighborhood Painters | Real E Painting",
+    description:
+      "Meet Real E Painting, a local Utah painting company built on honest pricing, clear communication, and careful craftsmanship for homes and businesses.",
+    path: "/about",
+    jsonLd: schema,
+  });
+
   const values = [
     {
       icon: Award,

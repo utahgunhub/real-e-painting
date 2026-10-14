@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, Clock } from "lucide-react";
 import { SocialLinks } from "@/components/SocialLinks";
 import { SOCIAL_LINKS } from "@/data/socialLinks";
+import { getServicePath } from "@/data/servicePages";
 
 const Footer = () => {
   return (
@@ -57,7 +58,7 @@ const Footer = () => {
               ].map((service) => (
                 <li key={service}>
                   <Link
-                    to="/services"
+                    to={getServicePath(service) ?? "/services"}
                     className="text-primary-foreground/70 hover:text-primary transition-colors text-left"
                   >
                     {service}

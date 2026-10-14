@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import ParallaxCard from "@/components/ParallaxCard";
+import { getServicePath } from "@/data/servicePages";
 
 const Services = () => {
 
@@ -10,25 +11,25 @@ const Services = () => {
       title: "Interior Painting",
       label: "Interior Painting",
       imageSrc: "/interior-painting.png",
-      href: "/services",
+      href: "/services/interior-painting",
     },
     {
       title: "Exterior Painting",
       label: "Exterior Painting",
       imageSrc: "/exterior-painting.png",
-      href: "/services",
+      href: "/services/exterior-painting",
     },
     {
       title: "Residential Painting",
       label: "Residential Painting",
       imageSrc: "/interior-painting.png",
-      href: "/services",
+      href: "/services/residential-painting",
     },
     {
       title: "Commercial Painting",
       label: "Commercial Painting",
       imageSrc: "/commercial-painting.png",
-      href: "/services",
+      href: "/services/commercial-painting",
     },
   ];
 
@@ -96,14 +97,20 @@ const Services = () => {
 
         {/* Additional services */}
         <div className="mt-12 flex flex-wrap justify-center gap-3">
-          {additionalServices.map((service) => (
-            <span
-              key={service}
-              className="px-4 py-2 rounded-full bg-card text-foreground text-sm font-medium border border-border"
-            >
-              {service}
-            </span>
-          ))}
+          {additionalServices.map((service) => {
+            const path = getServicePath(service);
+            const className =
+              "px-4 py-2 rounded-full bg-card text-foreground text-sm font-medium border border-border";
+            return path ? (
+              <Link key={service} to={path} className={`${className} hover:border-primary/50 hover:text-primary transition-colors`}>
+                {service}
+              </Link>
+            ) : (
+              <span key={service} className={className}>
+                {service}
+              </span>
+            );
+          })}
         </div>
         
         {/* CTA */}

@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import heroImage from "@/assets/interior-painting.jpg";
+import { getServicePath } from "@/data/servicePages";
+import { buildBreadcrumbSchema, useSeo } from "@/hooks/useSeo";
 import {
   Paintbrush,
   PaintBucket,
@@ -138,7 +140,18 @@ const itemVariants = {
   },
 };
 
+const schema = [buildBreadcrumbSchema([{ name: "Services", path: "/services" }])];
+
 const Services = () => {
+  useSeo({
+    title: "Painting Services in Utah | Real E Painting",
+    description:
+      "Interior, exterior, residential, and commercial painting in Utah, plus cabinets, epoxy, wallpaper, drywall repair, and wood staining. Free estimates.",
+    path: "/services",
+    image: "/interior-painting.png",
+    jsonLd: schema,
+  });
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -161,24 +174,49 @@ const Services = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
           >
-            {services.map((service) => (
-              <motion.div
-                key={service.title}
-                variants={itemVariants}
-                whileHover={{ y: -6 }}
-                className="group bg-card rounded-2xl p-8 shadow-card hover:shadow-purple transition-all duration-300 border border-border"
-              >
-                <div className="w-14 h-14 rounded-xl bg-gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-7 h-7 text-primary-foreground" />
-                </div>
-                <h3 className="font-display font-bold text-xl text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
-            ))}
+            {services.map((service) => {
+              const path = getServicePath(service.title);
+              const card = (
+                <>
+                  <div className="w-14 h-14 rounded-xl bg-gradient-brand flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl text-foreground mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed flex-1">
+                    {service.description}
+                  </p>
+                  {path && (
+                    <span className="mt-6 inline-flex items-center gap-2 font-semibold text-primary">
+                      Learn more
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  )}
+                </>
+              );
+
+              return (
+                <motion.div
+                  key={service.title}
+                  variants={itemVariants}
+                  whileHover={{ y: -6 }}
+                  className="group bg-card rounded-2xl shadow-card hover:shadow-purple transition-all duration-300 border border-border"
+                >
+                  {path ? (
+                    <Link
+                      to={path}
+                      className="h-full p-8 flex flex-col"
+                      aria-label={`Learn more about ${service.title}`}
+                    >
+                      {card}
+                    </Link>
+                  ) : (
+                    <div className="h-full p-8 flex flex-col">{card}</div>
+                  )}
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { X, ZoomIn } from "lucide-react";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import heroImage from "@/assets/exterior-painting.jpg";
+import { buildBreadcrumbSchema, useSeo } from "@/hooks/useSeo";
 
 const galleryImages = [
   "/gallery/gallery-1.png",
@@ -20,7 +21,18 @@ const galleryImages = [
   "/gallery/gallery-10.png",
 ];
 
+const schema = [buildBreadcrumbSchema([{ name: "Gallery", path: "/gallery" }])];
+
 const Gallery = () => {
+  useSeo({
+    title: "Painting Project Gallery | Real E Painting Utah",
+    description:
+      "See interior, exterior, cabinet, deck, and floor coating projects completed by Real E Painting for homes and businesses across Utah.",
+    path: "/gallery",
+    image: "/gallery/gallery-4.png",
+    jsonLd: schema,
+  });
+
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (

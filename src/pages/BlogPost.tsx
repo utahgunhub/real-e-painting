@@ -6,10 +6,51 @@ import CTASection from "@/components/home/CTASection";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { blogPosts, getPostBySlug } from "@/data/blogPosts";
+import { SITE_URL, buildBreadcrumbSchema, useSeo } from "@/hooks/useSeo";
+import { useMemo } from "react";
 
 const BlogPost = () => {
   const { slug } = useParams();
   const post = getPostBySlug(slug);
+  const path = `/blog/${slug ?? ""}`;
+
+  const schema = useMemo(() => {
+    if (!post) return undefined;
+    const published = new Date(post.date).toISOString().slice(0, 10);
+    return [
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        image: `${SITE_URL}${post.image}`,
+        datePublished: published,
+        dateModified: published,
+        mainEntityOfPage: `${SITE_URL}${path}`,
+        author: { "@type": "Organization", name: "Real E Painting", url: SITE_URL },
+        publisher: {
+          "@type": "Organization",
+          name: "Real E Painting",
+          logo: { "@type": "ImageObject", url: `${SITE_URL}/real-e-logo.png` },
+        },
+      },
+      buildBreadcrumbSchema([
+        { name: "Blog", path: "/blog" },
+        { name: post.title, path },
+      ]),
+    ];
+  }, [post, path]);
+
+  const brandedTitle = post ? `${post.title} | Real E Painting` : "Blog | Real E Painting";
+
+  useSeo({
+    title: brandedTitle.length <= 60 || !post ? brandedTitle : post.title,
+    description: post?.excerpt ?? "",
+    path,
+    image: post?.image,
+    type: "article",
+    jsonLd: schema,
+  });
 
   if (!post) {
     return <Navigate to="/blog" replace />;

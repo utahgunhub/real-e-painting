@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/hero-painting.jpg";
 import { blogPosts as posts } from "@/data/blogPosts";
+import { buildBreadcrumbSchema, useSeo } from "@/hooks/useSeo";
 
 const categories = ["All", "Interior", "Exterior", "Tips", "Color"];
 
@@ -21,7 +22,18 @@ const itemVariants = {
   },
 };
 
+const schema = [buildBreadcrumbSchema([{ name: "Blog", path: "/blog" }])];
+
 const Blog = () => {
+  useSeo({
+    title: "Painting Tips & Color Ideas Blog | Real E Painting",
+    description:
+      "Painting tips, color ideas, and home care advice for Utah homeowners from the crew at Real E Painting — interior, exterior, cabinets, and more.",
+    path: "/blog",
+    image: "/gallery/gallery-6.png",
+    jsonLd: schema,
+  });
+
   const [activeCategory, setActiveCategory] = useState("All");
 
   const featured = posts.find((p) => p.featured) ?? posts[0];

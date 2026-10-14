@@ -5,8 +5,19 @@ import { LeadForm } from "@/components/LeadForm";
 import { SocialLinks } from "@/components/SocialLinks";
 import { Phone, Mail, Clock } from "lucide-react";
 import heroImage from "@/assets/exterior-painting.jpg";
+import { buildBreadcrumbSchema, useSeo } from "@/hooks/useSeo";
+
+const schema = [buildBreadcrumbSchema([{ name: "Contact", path: "/contact" }])];
 
 const Contact = () => {
+  useSeo({
+    title: "Get a Free Painting Estimate in Utah | Real E Painting",
+    description:
+      "Request a free, no-obligation painting estimate from Real E Painting. Call or text (435) 777-3508 or send the form — we reply within 24 hours.",
+    path: "/contact",
+    jsonLd: schema,
+  });
+
   return (
     <div className="min-h-screen">
       <Header />
