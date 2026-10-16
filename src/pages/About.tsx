@@ -63,7 +63,7 @@ const About = () => {
               Real E Painting was built on a simple idea: bring friendly, professional painting services to Utah neighborhoods. Whether you need interior house painting in a single room or a full exterior refresh, our local crew is here to help.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              From cabinets and countertops to epoxy floors, wallpaper, drywall repair, and wood staining, we offer a full range of residential and commercial painting services across Utah. Every project gets careful prep, quality products, and the respect your home or business deserves.
+              From cabinets and countertops to limewash, plaster, epoxy floors, wallpaper, and wood staining, we offer a full range of residential and commercial painting services across Utah. Every project gets careful prep, quality products, and the respect your home or business deserves.
             </p>
           </div>
         </div>

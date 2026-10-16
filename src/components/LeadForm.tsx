@@ -16,6 +16,8 @@ const serviceOptions = [
   { value: "cabinets", label: "Cabinets & Bookcases" },
   { value: "epoxy", label: "Epoxy" },
   { value: "wallpaper", label: "Wallpaper" },
+  { value: "limewash", label: "Limewash" },
+  { value: "plaster", label: "Plaster" },
   { value: "countertops", label: "Countertops & Bathtubs" },
   { value: "trim", label: "Trim Repair" },
   { value: "drywall", label: "Drywall Repair & Texture" },

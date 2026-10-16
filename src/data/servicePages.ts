@@ -19,7 +19,7 @@ export const SERVICE_PAGES: ServicePageLink[] = [
     title: "Exterior Painting",
     path: "/services/exterior-painting",
     image: "/exterior-painting.png",
-    blurb: "Weather-ready coatings built for Utah's sun, snow, and wind.",
+    blurb: "Durable coatings built for Utah's sun, snow, and wind.",
   },
   {
     slug: "residential-painting",

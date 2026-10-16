@@ -37,6 +37,8 @@ const Services = () => {
     "Cabinets & Bookcases",
     "Epoxy",
     "Wallpaper",
+    "Limewash",
+    "Plaster",
     "Countertops & Bathtubs",
     "Trim Repair",
     "Drywall Repair & Texture",
@@ -55,7 +57,7 @@ const Services = () => {
             Utah Painting <span className="text-gradient">Services</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From cabinet painting and epoxy floors to full interior and exterior house painting, Real E Painting delivers complete solutions for Utah homes and commercial properties.
+            From cabinet painting, limewash, and plaster to full interior and exterior house painting, Real E Painting delivers complete solutions for Utah homes and commercial properties.
           </p>
         </div>
 

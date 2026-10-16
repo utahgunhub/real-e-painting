@@ -51,6 +51,8 @@ const Footer = () => {
                 "Cabinets & Bookcases",
                 "Epoxy",
                 "Wallpaper",
+                "Limewash",
+                "Plaster",
                 "Countertops & Bathtubs",
                 "Trim Repair",
                 "Drywall Repair & Texture",

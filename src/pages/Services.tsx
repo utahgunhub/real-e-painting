@@ -16,6 +16,8 @@ import {
   BookOpen,
   Layers,
   LayoutGrid,
+  Droplets,
+  BrickWall,
   Bath,
   Ruler,
   Hammer,
@@ -32,13 +34,13 @@ const services = [
     icon: Paintbrush,
     title: "Interior Painting",
     description:
-      "Walls, ceilings, doors, and more — a fresh interior coat that transforms any room with clean lines and a flawless finish.",
+      "Walls, ceilings, doors, and more. A fresh interior coat that transforms any room with clean lines and a flawless finish.",
   },
   {
     icon: PaintBucket,
     title: "Exterior Painting",
     description:
-      "Boost curb appeal and protect your home from Utah's sun, snow, and wind with durable, weather-ready exterior coatings.",
+      "Boost curb appeal and protect your home from Utah's sun, snow, and wind with durable exterior coatings.",
   },
   {
     icon: Home,
@@ -56,7 +58,7 @@ const services = [
     icon: BookOpen,
     title: "Cabinets & Bookcases",
     description:
-      "Refinish and repaint cabinets, bookcases, and built-ins for a like-new look without the cost of replacement.",
+      "Refinish and repaint cabinets, bookcases, and built-ins for a fresh look without the cost of replacement.",
   },
   {
     icon: Layers,
@@ -69,6 +71,18 @@ const services = [
     title: "Wallpaper",
     description:
       "Professional wallpaper installation and removal for accent walls, patterns, and statement spaces.",
+  },
+  {
+    icon: Droplets,
+    title: "Limewash",
+    description:
+      "A breathable mineral finish with soft, matte color and natural depth. A timeless look that ages beautifully.",
+  },
+  {
+    icon: BrickWall,
+    title: "Plaster",
+    description:
+      "Smooth or textured plaster finishes that give walls depth, character, and a handcrafted feel beyond standard paint.",
   },
   {
     icon: Bath,
@@ -146,7 +160,7 @@ const Services = () => {
   useSeo({
     title: "Painting Services in Utah | Real E Painting",
     description:
-      "Interior, exterior, residential, and commercial painting in Utah, plus cabinets, epoxy, wallpaper, drywall repair, and wood staining. Free estimates.",
+      "Interior, exterior, residential, and commercial painting in Utah, plus cabinets, limewash, plaster, epoxy, and wallpaper. Free estimates.",
     path: "/services",
     image: "/interior-painting.png",
     jsonLd: schema,
@@ -159,7 +173,7 @@ const Services = () => {
       <PageHero
         eyebrow="Our Services"
         title="Complete Painting Services in Utah"
-        subtitle="From interior and exterior house painting to cabinets, epoxy, wallpaper, and repairs — Real E Painting freshens up your space, inside and out, for homes and businesses."
+        subtitle="From interior and exterior house painting to cabinets, limewash, plaster, epoxy, and wallpaper. Real E Painting freshens up your space, inside and out, for homes and businesses."
         image={heroImage}
         imageAlt="Interior painting project by Real E Painting"
       />
