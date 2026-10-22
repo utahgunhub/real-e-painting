@@ -32,78 +32,91 @@ import {
 const services = [
   {
     icon: Paintbrush,
+    anchor: "interior-painting",
     title: "Interior Painting",
     description:
       "Walls, ceilings, doors, and more. A fresh interior coat that transforms any room with clean lines and a flawless finish.",
   },
   {
     icon: PaintBucket,
+    anchor: "exterior-painting",
     title: "Exterior Painting",
     description:
       "Boost curb appeal and protect your home from Utah's sun, snow, and wind with durable exterior coatings.",
   },
   {
     icon: Home,
+    anchor: "residential-painting",
     title: "Residential Painting",
     description:
       "From single rooms to whole-home makeovers, we treat your house with the care and respect it deserves.",
   },
   {
     icon: Building2,
+    anchor: "commercial-painting",
     title: "Commercial Painting",
     description:
       "Offices, retail, and commercial spaces painted on schedule and with minimal disruption to your business.",
   },
   {
     icon: BookOpen,
+    anchor: "cabinets",
     title: "Cabinets & Bookcases",
     description:
       "Refinish and repaint cabinets, bookcases, and built-ins for a fresh look without the cost of replacement.",
   },
   {
     icon: Layers,
+    anchor: "epoxy",
     title: "Epoxy",
     description:
       "Tough, attractive epoxy coatings for garages, basements, and floors that stand up to heavy daily use.",
   },
   {
     icon: LayoutGrid,
+    anchor: "wallpaper",
     title: "Wallpaper",
     description:
       "Professional wallpaper installation and removal for accent walls, patterns, and statement spaces.",
   },
   {
     icon: Droplets,
+    anchor: "limewash",
     title: "Limewash",
     description:
       "A breathable mineral finish with soft, matte color and natural depth. A timeless look that ages beautifully.",
   },
   {
     icon: BrickWall,
+    anchor: "plaster",
     title: "Plaster",
     description:
       "Smooth or textured plaster finishes that give walls depth, character, and a handcrafted feel beyond standard paint.",
   },
   {
     icon: Bath,
+    anchor: "countertops",
     title: "Countertops & Bathtubs",
     description:
       "Resurfacing for countertops and bathtubs that refreshes worn surfaces and extends their life.",
   },
   {
     icon: Ruler,
+    anchor: "trim-repair",
     title: "Trim Repair",
     description:
       "Repair and repaint baseboards, crown molding, and trim for crisp, finished detail throughout your space.",
   },
   {
     icon: Hammer,
+    anchor: "drywall",
     title: "Drywall Repair & Texture",
     description:
       "Patch holes, fix cracks, and match texture so your walls look seamless before the first coat goes on.",
   },
   {
     icon: TreePine,
+    anchor: "wood-staining",
     title: "Wood Staining",
     description:
       "Rich, protective stains for decks, fences, doors, and trim that highlight natural wood grain.",
@@ -213,9 +226,10 @@ const Services = () => {
               return (
                 <motion.div
                   key={service.title}
+                  id={service.anchor}
                   variants={itemVariants}
                   whileHover={{ y: -6 }}
-                  className="group bg-card rounded-2xl shadow-card hover:shadow-purple transition-all duration-300 border border-border"
+                  className="group scroll-mt-36 bg-card rounded-2xl shadow-card hover:shadow-purple transition-all duration-300 border border-border"
                 >
                   {path ? (
                     <Link

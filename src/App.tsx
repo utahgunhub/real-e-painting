@@ -17,6 +17,8 @@ import ExteriorPainting from "./pages/services/ExteriorPainting";
 import ResidentialPainting from "./pages/services/ResidentialPainting";
 import CommercialPainting from "./pages/services/CommercialPainting";
 import CabinetPainting from "./pages/services/CabinetPainting";
+import Limewash from "./pages/services/Limewash";
+import Plaster from "./pages/services/Plaster";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/services/residential-painting" element={<ResidentialPainting />} />
           <Route path="/services/commercial-painting" element={<CommercialPainting />} />
           <Route path="/services/cabinet-painting" element={<CabinetPainting />} />
+          <Route path="/services/limewash" element={<Limewash />} />
+          <Route path="/services/plaster" element={<Plaster />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

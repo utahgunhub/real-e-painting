@@ -104,7 +104,6 @@ const sheens = [
   { name: "Eggshell", use: "Living rooms, bedrooms", shine: 30 },
   { name: "Satin", use: "Kitchens, halls, kids' rooms", shine: 50 },
   { name: "Semi-Gloss", use: "Trim, doors, bathrooms", shine: 75 },
-  { name: "Gloss", use: "Cabinets, railings, accents", shine: 100 },
 ];
 
 const prepSteps = [
@@ -236,7 +235,7 @@ const InteriorPainting = () => {
                 for each surface.
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {sheens.map((sheen, index) => (
                 <motion.div
                   key={sheen.name}
